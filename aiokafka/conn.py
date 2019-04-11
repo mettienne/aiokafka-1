@@ -46,7 +46,7 @@ class VersionInfo:
         self._versions = versions
 
     def pick_best(self, request_versions):
-        return request_version[0]
+        return request_versions[0]
         # api_key = request_versions[0].API_KEY
         # supported_versions = self._versions.get(api_key)
         # if supported_versions is None:
