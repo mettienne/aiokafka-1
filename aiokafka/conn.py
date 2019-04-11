@@ -46,19 +46,20 @@ class VersionInfo:
         self._versions = versions
 
     def pick_best(self, request_versions):
-        api_key = request_versions[0].API_KEY
-        supported_versions = self._versions.get(api_key)
-        if supported_versions is None:
-            return request_versions[0]
-        else:
-            for req_klass in reversed(request_versions):
-                if supported_versions[0] <= req_klass.API_VERSION and \
-                        req_klass.API_VERSION <= supported_versions[1]:
-                    return req_klass
-        raise Errors.KafkaError(
-            "Could not pick a version for API_KEY={} from {}. ".format(
-                api_key, supported_versions)
-        )
+        return request_version[0]
+        # api_key = request_versions[0].API_KEY
+        # supported_versions = self._versions.get(api_key)
+        # if supported_versions is None:
+        #     return request_versions[0]
+        # else:
+        #     for req_klass in reversed(request_versions):
+        #         if supported_versions[0] <= req_klass.API_VERSION and \
+        #                 req_klass.API_VERSION <= supported_versions[1]:
+        #             return req_klass
+        # raise Errors.KafkaError(
+        #     "Could not pick a version for API_KEY={} from {}. ".format(
+        #         api_key, supported_versions)
+        # )
 
 
 @asyncio.coroutine
